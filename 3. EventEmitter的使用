@@ -1,0 +1,32 @@
+参考：
+1. https://segmentfault.com/a/1190000002964630
+
+
+在nodejs中有一个EventEmitter类，目的是实现各种事件的event处理。当需要指定绑定事件时，可以使用EventEmitter类的on方法或addListener方法.这两个方法实现原理相同，只是名称不一样.这两个方法都有两个参数，第一个参数为指定事件名 第二个参数为该事件的事件处理函数:
+
+var http = require('http');
+var server = http.createServer();
+server.addListerner('request', function(req, res) {
+    console.log('addListener');
+    res.end();
+})
+
+server.on('request', function(req, res) {
+    console.log('on');
+    res.end();
+})
+
+setMaxListeners()
+在默认情况下，同一个指定的事件，最多可以绑定10个事件处理函数。也可以通过下面的方法修改：
+
+var http = require('http');
+var server = http.createServer();
+server.setMaxListeners(5);
+server.addListener('request', function(req, res) {
+   console.log('mark');
+   res.end();
+})
+
+emitter.once()和emitter.on()
+emitter.once()与emtter.on()区别在于，emitter.once()当事件处理函数，执行一次后会立即解除，该事件处理函数只会执行一次。
+
