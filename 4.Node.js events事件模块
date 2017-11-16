@@ -1,0 +1,34 @@
+参考：
+1. http://www.jb51.net/article/98200.htm
+
+Node.js的大部分核心API都是基于异步事件驱动设计的，所有可以分发事件的对象都是
+EventEmitter类的实例。
+由于Node.js是单线程运行，所以node.js需要借助事件轮询，不断去查询事件队列中的
+事件消息，然后执行该事件对应的回调函数。
+EventEmitter的使用
+1.监听事件和分发事件
+EventEmitter实例可以使用on或addListener监听事件，emit()方法分发事件
+
+const events = require('events');
+EventEmitter = events.EventEmitter;
+util = require('util');
+
+function myEmitter(){
+   EventEmitter.call(this);
+};
+
+util.inherits(myEmiter, EventEmitter);//继承EventEmitter类
+const myEmitterIns = new myEmitter();
+myEmitterIns.on('data',(o)=>{
+  console.log('receive the data:' +o.a);
+});
+
+或者使用class类
+
+class myEmitter extends EventEmitter{}//继承EventEmitter类
+const myEmitterIns = new myEmitter();
+
+myEmitterIns.on('data',(o)=>{
+   console.log('receive the data:' +o.a);
+});
+myEmitterIns.emit('data',{a:1});
