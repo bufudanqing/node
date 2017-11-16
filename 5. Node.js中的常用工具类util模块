@@ -1,0 +1,7 @@
+参考：
+1.
+https://itbilu.com/nodejs/core/N1YATFw8.html
+
+util是一个Node.js核心模块，提供常用函数的集合，用于弥补JavaScript的功能的不足，
+util模块设计的主要目的是为了满足Node内部API的需求。其中包括：格式化字符串、对象的
+序列化、实现对象继承等常用方法。要是用util模块中的方法，只需require('util')引入即可。
