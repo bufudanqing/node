@@ -45,5 +45,12 @@ const buf5 = Buffer.from('tést');
 const buf6 = Buffer.from('tést', 'latin1');
 
 
+buffers:
+1. Temporary storage spot for a chunk of data that is being
+transferred from one place to another
+2. The buffer is filled with data , them passed along
+3. Transfer small chunks of data at a time
+
+
 
 
