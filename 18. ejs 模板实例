@@ -14,7 +14,7 @@ app.get('/contact', function(req, res){
 });
 
 app.get('/profile/:name', function(req, res){
-  var data = {age: 29, job: 'ninja'};
+  var data = {age: 29, job: 'ninja', hobbies: ['eating', 'fighting', 'fishing']};
   res.render('profile', {person: req.params.name, data: data});
 });
 
@@ -39,7 +39,13 @@ profile.ejs
          letter-spacing: 2px;
          text-align: center;
        }
-       p{
+       h2{
+         font-size: 48px;
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         text-align: center;
+       }
+       p,li{
          font-size: 16px;
          text-align: center;
        }
@@ -48,7 +54,13 @@ profile.ejs
    <body>
      <h1>Welcome to the profile of <%= person %>.</h1>
      <p><strong>Age: </strong><%= data.age %></p>
-     <p><strong>Age: </strong><%= data.job %></p>
+     <p><strong>Job: </strong><%= data.job %></p>
+     <h2>Hobbies</h2>
+     <ul>
+       <% data.hobbies.forEach(function(item){ %>
+         <li><%= item%></li>
+       <% }); %>
+     </ul>
    </body>
 </html>
 =======================================================================
