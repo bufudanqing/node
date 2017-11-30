@@ -1,0 +1,51 @@
+popular modules:
+Express - Web development framework
+Connect - Extensible HTTP server framework
+Socket.io - Server side component for web sockets
+Pug/Jade - Template engine inspired by HAML
+Mongo/Mongoose - Wrappers to interact with MongoDB
+Coffee-Script - CoffeScript compiler
+Redis - Redis client library
+
+使用 npm init命令可以初始化package.json文件
+
+app.js入口文件
+=============================================
+const http = require('http');
+const fs = require('fs');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+fs.readFile('index.html', (err, html) => {
+    if(err){
+        throw err;
+    }
+    const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-type', 'text/html');//text/plain会输出所有标签，而html会当成html解析
+    res.write(html);
+    res.end('Hello');
+
+    })
+
+    server.listen(port, hostname, () => {
+        console.log('Server started on port' + port);
+    });
+});
+
+
+===============================================================
+index.html
+================================================================
+<!DOCTYPE html>
+<html>
+<head>
+    <title>yeah</title>
+</head>
+<body>
+    <h1>
+        hhhhh
+    </h1>
+</body>
+</html>
