@@ -1,0 +1,6 @@
+express官网是这么解释middleware是做什么的：
+
+中间件(middleware)函数能够访问请求对象 (req)、响应对象 (res) 以及应用程序的请求/响应循环中的下一个中间件(middleware)函数。下一个中间件函数通常由名为 next 的变量来表示。
+
+我们常见的middleware大概是这样的：
+
