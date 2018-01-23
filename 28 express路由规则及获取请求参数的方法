@@ -1,0 +1,54 @@
+参考：
+http://blog.csdn.net/xiaobing_hope/article/details/55046753
+
+express中常见的路由规则
+
+主要使用的路由规则是get和post两种，即
+
+var express = require('express');
+var app = express();
+app.get();      // get和post两种请求方式
+app.post();
+
+app.get()和app.post()的第一个参数为请求路径，第二个参数为处理请求的回调函数；回调函数有两个参数，分别为req和res，代表请求信息和响应信息。
+
+获取请求路径和请求体中的各种参数
+
+路径请求及对应获取请求路径的形式有以下几种： 
+（1）req.query (查询get请求中的参数)
+
+GET ／shoes?order=desc&shoe[type]=converse&shoe[color]=blue
+req.query.order
+// =>'desc'
+
+req,query.shoe.type
+// =>'converse'
+
+（2）req.body （查询请求体）
+
+// POST user[name]=dby&user[email]=bing@163.com
+req.body.user.name
+// =>'dby'
+
+（3）req.params
+
+// GET /file/javascript/jquery.js
+req.params[0]
+// => 'javascript/jquery.js'
+
+（4）req.params(name)
+
+// ?name=tobi
+req.params(name)
+// => 'tobi'
+
+// POST name=tobi
+req.param('name')
+// => 'tobi'
+
+由上述代码可以很明显的看出各种获取路径的含义：
+
+req.query: 处理get请求，获取get请求的请求参数
+req.params: 处理/:xxx形式的get或者post请求，获取请求参数
+req.body: 处理post请求，获取post了请求的请求体
+req.param(): 处理get和post请求，但查找优先级由高到低为req.params->req.body->req.query
